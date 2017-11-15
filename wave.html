@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style.css">
+    <title>Wave With Drawing API</title>
+    
+</head>
+<body>
+        <canvas id="myCanvas" width="1000" height="400"></canvas>
+        <script src="utils.js"></script>
+        <script>
+            window.onload = function()
+            {
+                var canvas = document.getElementById('myCanvas');
+                canvas.width = window.innerWidth;
+                var context = canvas.getContext('2d');
+                var angle = 0;
+                var range = 50;
+                var centerY = canvas.height / 2;
+                var xspeed = 1;
+                var yspeed = 0.05;
+                var xpos = 0;
+                var ypos = centerY;
+
+                context.lineWidth = 2;
+
+                (function drawFrame()
+                {
+                    window.requestAnimationFrame(drawFrame,canvas);
+                    context.beginPath();
+                    context.moveTo(xpos,ypos);
+                    
+                    //Calculate The New Position
+
+                    xpos += xspeed;
+                    angle += yspeed;
+
+                    ypos = centerY + Math.sin(angle) * range;
+                    context.lineTo(xpos,ypos);
+                    context.stroke();
+
+                }());
+
+            };
+        </script>
+    
+</body>
+</html>

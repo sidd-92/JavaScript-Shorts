@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style.css">
+    <title>Skeleton</title>
+</head>
+<body>
+    <canvas id="myCanvas" width="400" height="500"></canvas>
+    <script src="utils.js"></script>
+    <script>window.onload = function()
+    {
+       var canvas = document.getElementById('myCanvas'),
+       mouse = utils.captureMouse(canvas);
+
+       canvas.addEventListener('mousedown',function()
+       {
+           console.log("X: "+mouse.x + " ,Y: " + mouse.y);
+       },false);
+       
+    };
+
+    
+    </script>
+    
+    
+</body>
+</html>
