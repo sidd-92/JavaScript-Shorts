@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style.css">
+    <title>Oval</title>
+</head>
+<body>
+
+        <canvas id="myCanvas" width="1000" height="400"></canvas>
+        <script src="utils.js"></script>
+        <script src="ball.js"></script>
+        <script>
+            window.onload = function()
+            {
+                var canvas = document.getElementById('myCanvas');
+                var context = canvas.getContext('2d');
+                var ball = new Ball();
+                var angle = 0;
+                var centerX = canvas.width / 2;
+                var centerY = canvas.height / 2;
+                var radiusX = 150;
+                var radiusY = 100;
+                var speed = 0.05;
+
+
+                (function drawFrame(){
+
+                    window.requestAnimationFrame(drawFrame,canvas);
+                    context.clearRect(0,0,canvas.width,canvas.height);
+
+                    ball.x = centerX + Math.sin(angle) * radiusX;
+                    ball.y = centerY + Math.cos(angle) * radiusY;
+                    angle += speed;
+                    ball.draw(context);
+
+                }());
+
+            };
+        </script>
+    
+</body>
+</html>
